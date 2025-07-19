@@ -32,6 +32,7 @@ The LSTM cell has 3 parts: input, output, and hidden memory. This hidden memory 
   - **Output gate**: the combination of the new hidden memory data and the new input data
 ^This is _just a rough idea_ of an LSTM cell, it is slightly more complicated than this, I suggest searching up the mathematics and workings behind the LSTM cell to fully understand. But to just get a rough idea, an LSTM can hold both short and long-term data by incorporating a memory unit in the cell so it can spit out the short-term data quickly while still retaining the long-term information. At the same time, both of these data are processed to determine how much of the long-term and short-term data should be kept/forgotten through weight and are corrected after each training/testing epoch through back-propagation.
 
-This is the knowledge I have so far of what my model will be. I will now get coding and hopefully accurately pluck out the right risk and return!
+## Data used:
 
+Using yahoo finance, I will get the CBOE Volatility Index (VIX) Historical data and the S&P 500 Options Data
 
