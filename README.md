@@ -1,6 +1,6 @@
 # GARCH-LSTM-forecasting
 
-This project is about curating a machine learning model that can forecast stocks and capture both the short-term and long-term events. Short-term events, such as panic-selling, or long-term events, such as monetary policies. 
+This project is about curating a machine learning model that combines econometrics and ML, it can forecast stocks and capture both the short-term and long-term events. Short-term events, such as panic-selling, or long-term events, such as monetary policies. 
 
 ## Motivation
 From my previous project at [Machine-Learning-Data-Analysis](https://github.com/dancheung555/Machine-Learning-Data-Analysis), I explored CNN and LSTM models, which motivated me to improve, excel, and succeed further. Before starting this project, I was exploring how I could model the difficult parts of time series, such as what seemed to be outliers or noise, but was affected by real-world events. This also ties into what ways I can predict the biggest buys or sells in the stock market, and how to implement a better model to predict these kinds of events. After reading some articles and finding how some of these models work, I will start with the GARCH model combined with the LSTM model.
