@@ -33,6 +33,16 @@ The LSTM cell has 3 parts: input, output, and hidden memory. This hidden memory 
 ^This is _just a rough idea_ of an LSTM cell, it is slightly more complicated than this, I suggest searching up the mathematics and workings behind the LSTM cell to fully understand. But to just get a rough idea, an LSTM can hold both short and long-term data by incorporating a memory unit in the cell so it can spit out the short-term data quickly while still retaining the long-term information. At the same time, both of these data are processed to determine how much of the long-term and short-term data should be kept/forgotten through weight and are corrected after each training/testing epoch through back-propagation.
 
 ## Data used:
+I will download the CBOE Volatility Index (VIX) Historical data and the S&P 500 Data from online
 
-Using yahoo finance, I will get the CBOE Volatility Index (VIX) Historical data and the S&P 500 Options Data
+**CBOE Volatility Index (VIX)**: This index determines the market volatility on the S&P 500 index. In other words, it determines how much the S&P 500 will fluctuate in the next 30 days.
+
+- VIX < 20: low volatility, good stability
+- 20 < VIX < 30: moderate volatility, normal market environment
+- 30 < VIX: High volatility, turbulence, higher chance of price swings
+
+**S&P 500 Index**: this index tracks the stock performance of the 500 leading companies listed on stock exchanges in the United States.
+
+I will download the data from the yfinance package.
+
 
