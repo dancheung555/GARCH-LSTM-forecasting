@@ -1,6 +1,6 @@
 # GARCH-LSTM-forecasting
 
-This project is about curating a machine learning model that can forecast stocks and capture both the short-term and long-term events. Short-term events, such as panic-selling, or long-term events, such as monetary policies. 
+This project is about curating a machine learning model that combines econometrics and ML, it can forecast stocks and capture both the short-term and long-term events. Short-term events, such as panic-selling, or long-term events, such as monetary policies. 
 
 ## Motivation
 From my previous project at [Machine-Learning-Data-Analysis](https://github.com/dancheung555/Machine-Learning-Data-Analysis), I explored CNN and LSTM models, which motivated me to improve, excel, and succeed further. Before starting this project, I was exploring how I could model the difficult parts of time series, such as what seemed to be outliers or noise, but was affected by real-world events. This also ties into what ways I can predict the biggest buys or sells in the stock market, and how to implement a better model to predict these kinds of events. After reading some articles and finding how some of these models work, I will start with the GARCH model combined with the LSTM model.
@@ -33,6 +33,21 @@ The LSTM cell has 3 parts: input, output, and hidden memory. This hidden memory 
 ^This is _just a rough idea_ of an LSTM cell, it is slightly more complicated than this, I suggest searching up the mathematics and workings behind the LSTM cell to fully understand. But to just get a rough idea, an LSTM can hold both short and long-term data by incorporating a memory unit in the cell so it can spit out the short-term data quickly while still retaining the long-term information. At the same time, both of these data are processed to determine how much of the long-term and short-term data should be kept/forgotten through weight and are corrected after each training/testing epoch through back-propagation.
 
 ## Data used:
+I will download the VIX Index and S&P 500 Index data from the yfinance package in Python.
 
-Using yahoo finance, I will get the CBOE Volatility Index (VIX) Historical data and the S&P 500 Options Data
+**CBOE Volatility Index (VIX)**: This index determines the market volatility on the S&P 500 index. In other words, it determines how much the S&P 500 will fluctuate in the next 30 days.
+
+- VIX < 20: low volatility, good stability
+- 20 < VIX < 30: moderate volatility, normal market environment
+- 30 < VIX: High volatility, turbulence, higher chance of price swings
+
+**S&P 500 Index**: this index tracks the stock performance of the 500 leading companies listed on stock exchanges in the United States.
+
+
+## How the models work together
+The GARCH model will predict the volatility while the LSTM model will hold onto the long term price. In this case, our GARCH model's input is the VIX dataset and predict the log of returns, and the LSTM model's input is the S&P 500 dataset **and the GARCH residuals**. The output of this hybrid model will be the sum of the LSTM output and the GARCH volatility output.
+
+Why the GARCH residuals is part of the LSTM input?
+
+- Because the GARCH model assumes current time stamp depends on previous time stamp, it will not be able to predict any patterns that are not time dependent (eg a large spike tends to end quickly rather than escalate further). The LSTM taking in GARCH residuals can reveal hidden patterns and help correct the errors.
 
