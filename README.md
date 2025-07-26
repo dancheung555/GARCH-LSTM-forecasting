@@ -44,3 +44,10 @@ I will download the VIX Index and S&P 500 Index data from the yfinance package i
 **S&P 500 Index**: this index tracks the stock performance of the 500 leading companies listed on stock exchanges in the United States.
 
 
+## How the models work together
+The GARCH model will predict the volatility while the LSTM model will hold onto the long term price. In this case, our GARCH model's input is the VIX dataset and predict the log of returns, and the LSTM model's input is the S&P 500 dataset **and the GARCH residuals**. The output of this hybrid model will be the sum of the LSTM output and the GARCH volatility output.
+
+Why the GARCH residuals is part of the LSTM input?
+
+- Because the GARCH model assumes current time stamp depends on previous time stamp, it will not be able to predict any patterns that are not time dependent (eg a large spike tends to end quickly rather than escalate further). The LSTM taking in GARCH residuals can reveal hidden patterns and help correct the errors.
+
